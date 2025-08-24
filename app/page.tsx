@@ -1,10 +1,26 @@
+import Image from 'next/image';
+
 export default function HomePage() {
   return (
     <main className="container">
-      <section className="hero">
-        <h1>Hi, I'm Anthony</h1>
-        <p>Welcome to my portfolio. More coming soon.</p>
-        <a className="btn" href="#projects">View Projects</a>
+      <section className="hero hero-grid">
+        <div className="hero-copy">
+          <h1>Hi, I'm Anthony</h1>
+          <p>Welcome to my portfolio. More coming soon. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. </p>
+          <a className="btn" href="#projects">View Projects</a>
+        </div>
+        <div className="hero-visual">
+          <div className="hero-figure">
+            <Image
+              className="hero-img"
+              src="/images/profile.jpg"
+              alt="Anthony"
+              fill
+              priority
+              sizes="(min-width: 1024px) 460px, (min-width: 768px) 360px, 80vw"
+            />
+          </div>
+        </div>
       </section>
 
       <section id="projects" className="section">
