@@ -23,6 +23,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <div className="section-sep" aria-hidden="true"></div>
+
       <section id="projects" className="section">
         <h2>Featured Projects</h2>
         <div className="cards">

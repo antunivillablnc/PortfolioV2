@@ -7,7 +7,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [hash, setHash] = useState<string>('');
   const pathname = usePathname();
 
@@ -16,7 +16,7 @@ export default function Navbar() {
     setMounted(true);
     const root = document.documentElement;
     const stored = window.localStorage.getItem('theme');
-    let initial: 'light' | 'dark' = 'light';
+    let initial: 'light' | 'dark' = 'dark';
     if (stored === 'dark' || stored === 'light') initial = stored;
     else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) initial = 'dark';
     setTheme(initial);

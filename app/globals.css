@@ -39,6 +39,30 @@ body {
 .hero h1 { font-size: 3rem; margin: 0 0 0.75rem; letter-spacing: -0.02em; }
 .hero p { font-size: 1.125rem; color: #475569; margin: 0 0 1.5rem; }
 
+/* Section separator (subtle) */
+.section-sep {
+  position: relative;
+  height: 2px;
+  width: 100vw; /* full bleed */
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 1.25rem 0 2.25rem;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(100,116,139,0.5) 16%,
+    rgba(100,116,139,0.65) 50%,
+    rgba(100,116,139,0.5) 84%,
+    transparent 100%
+  );
+  /* Edge fade */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0 2%, #000 8% 92%, transparent 98% 100%);
+  mask-image: linear-gradient(90deg, transparent 0 2%, #000 8% 92%, transparent 98% 100%);
+}
+.dark .section-sep {
+  background: linear-gradient(90deg, transparent, rgba(148,163,184,0.22), transparent);
+}
+
 /* Contained hero with right-side image */
 .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 2rem; }
 .hero-copy { max-width: 40ch; }
@@ -99,4 +123,39 @@ body {
 .dark .card { background: #0f172a; border-color: #0b213f; }
 .dark .link { color: #38bdf8; }
 .dark .site-footer { color: #94a3b8; border-top-color: #0b213f; }
+
+/* Page load animations (stronger) */
+@keyframes reveal-fade { from { opacity: 0 } to { opacity: 1 } }
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(24px) }
+  to { opacity: 1; transform: translateY(0) }
+}
+@keyframes reveal-down {
+  from { opacity: 0; transform: translateY(-16px) }
+  to { opacity: 1; transform: translateY(0) }
+}
+@keyframes scale-in-fade {
+  from { opacity: 0; transform: translateY(18px) scale(.96); filter: blur(6px) }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0) }
+}
+
+/* Header: stagger logo and links */
+.nav { animation: reveal-down 700ms cubic-bezier(.22,1,.36,1) both; }
+.nav .logo { animation: reveal-down 700ms cubic-bezier(.22,1,.36,1) both; }
+.nav .nav-links li { opacity: 0; animation: reveal-down 700ms cubic-bezier(.22,1,.36,1) both; }
+.nav .nav-links li:nth-child(1) { animation-delay: .05s }
+.nav .nav-links li:nth-child(2) { animation-delay: .10s }
+.nav .nav-links li:nth-child(3) { animation-delay: .15s }
+
+/* Hero: copy and image enter distinctly */
+.hero-copy { opacity: 0; animation: reveal-up 750ms cubic-bezier(.22,1,.36,1) .06s both; }
+.hero-figure { opacity: 0; animation: scale-in-fade 820ms cubic-bezier(.22,1,.36,1) .12s both; }
+
+/* Sections and footer */
+.section { animation: reveal-up 820ms cubic-bezier(.22,1,.36,1) .12s both; }
+.site-footer { animation: reveal-fade 820ms cubic-bezier(.22,1,.36,1) .16s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav, .nav .logo, .nav .nav-links li, .hero-copy, .hero-figure, .section, .site-footer { animation: none !important }
+}
 
