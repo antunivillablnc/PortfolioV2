@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import ContactForm from '../components/ContactForm';
 
 export default function HomePage() {
   return (
@@ -34,6 +35,13 @@ export default function HomePage() {
             <a href="#" className="link">Learn more →</a>
           </article>
         </div>
+      </section>
+
+      <div className="section-sep" aria-hidden="true"></div>
+
+      <section id="contact" className="section">
+        <h2>Contact</h2>
+        <ContactForm />
       </section>
     </main>
   );
