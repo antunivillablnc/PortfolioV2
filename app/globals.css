@@ -257,6 +257,25 @@ body {
 .contact-form label {
   font-weight: 600;
 }
+.contact-input {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #cfe1d4;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: #0f172a;
+}
+.contact-input::placeholder { color: #94a3b8; }
+.contact-input:focus-visible {
+  outline: 2px solid rgba(111,191,115,0.45);
+  outline-offset: 2px;
+}
+.dark .contact-input {
+  background: #1a1f1b;
+  border-color: #3b403b;
+  color: #efe6d6;
+}
+.dark .contact-input::placeholder { color: #9aa396; }
 .contact-textarea {
   width: 100%;
   resize: vertical;
@@ -282,6 +301,17 @@ body {
 .contact-actions {
   display: flex;
   justify-content: center;
+}
+
+.contact-status {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+.contact-status.success {
+  color: #166534;
+}
+.contact-status.error {
+  color: #b91c1c;
 }
 
 /* Center the contact section content */
